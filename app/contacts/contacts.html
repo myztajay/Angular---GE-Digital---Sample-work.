@@ -1,8 +1,8 @@
 <div class="row" ng-controller="ContactsCtrl">
   <div class="col-md-5">
       <h3>Add Contact</h3>
-      <form>
-  <div ng-submit="addContact" class="form-group">
+      <form ng-submit="addContact()" >
+  <div class="form-group">
     <label>Name</label>
     <input type="text" class="form-control"  placeholder="Enter Name of Contact" ng-model="name">
   </div>
