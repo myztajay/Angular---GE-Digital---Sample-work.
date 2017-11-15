@@ -23,17 +23,14 @@ angular.module('myApp.contacts', ['ngRoute'])
     };
     firebase.initializeApp(config);
   }
+  //reference json that holds contacts
   var ref = firebase.database().ref().child('contactlist');
+  //angularfire provides json to array conversion with $firebaseArray
+  $scope.contacts = $firebaseArray(ref);
   
-  $scope.contacts = $firebaseArray(ref)
-
-   
-  
- 
-  console.log(ref.once('value').then(function(snapshot){
-    return snapshot.val()
-  }));
-  
+  $scope.addFormShow = true;
+  $scope.editFormShow = false;
+  //Create
   $scope.addContact = function(){
     ref.push({
       name: $scope.name,
@@ -44,4 +41,32 @@ angular.module('myApp.contacts', ['ngRoute'])
     $scope.email = '';
     $scope.phone= '';
   };
+  //Delete
+  $scope.removeContact = function(contact){
+    $scope.contacts.$remove(contact);
+  }
+  // Show Form
+  $scope.showEditForm = function(contact){
+    // angularfire $id get id of record
+    $scope.id = contact.$id;
+    $scope.addFormShow = false;
+    $scope.editFormShow = true;
+    $scope.name = contact.name;
+    $scope.email = contact.email;
+    $scope.phone = contact.phone;
+  }
+  //Update
+  $scope.editContact = function(contact){
+    var id = $scope.id
+    var record = $scope.contacts.$getRecord(id);  
+    record.name = $scope.name;
+    record.email = $scope.email;
+    record.phone = $scope.phone;
+    
+    $scope.contacts.$save(record).then(function(ref){  
+    })
+    $scope.name = '';
+    $scope.email = '';
+    $scope.phone= '';
+  }
 }]);
