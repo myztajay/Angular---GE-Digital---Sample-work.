@@ -1,5 +1,91 @@
 /* app css stylesheet */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 body{
   background-color: #ecf0f1;
 }
+
+.contacts-container{
+  min-width: 100%;
+  display:flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.ge{
+  background-color: #039be5;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  min-width: 100%;
+  margin: 10px 0;
+  position: relative;
+  width: 300px;
+  padding: 35px;
+      min-height: 410px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: white;
+}
+
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+    color: white;
+}
+.navbar-light .navbar-brand {
+    color: white;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+a:not([href]):not([tabindex]) {
+  color: white;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #bdc3c7;
+    border-color: #bdc3c7;
+}
+
+@media only screen and (min-width: 10px){
+  table {
+		overflow-x: auto;
+		display: block;
+	}
+}
+@media only screen and (min-width: 768px){
+  .add-edit-card {
+  flex: 0 0 100%;
+  }
+  .contact-card{
+  flex: 0 0 100%;
+  }
+}
+@media only screen and (min-width: 992px){
+  .add-edit-card {
+  flex: 0 0 35%;
+  }
+  .contact-card{
+  flex: 0 0 60%;
+  }
+
+}
+
+
+
+
+
