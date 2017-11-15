@@ -19,7 +19,25 @@
 </form>
   </div>
   <div class="col-md-7">
-    
+    <h3>Contacts</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat ="contact in contacts">
+          <td>{{contact.name}}</td>
+          <td>{{contact.email}}</td>
+          <td>{{contact.phone}}</td>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
   </div>
   
 </div>
