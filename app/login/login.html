@@ -31,7 +31,10 @@
           <label>Password Confirmation</label>
           <input type="password" class="form-control"  placeholder="Enter Password" ng-model="passwordConfirmation">
         </div>
-          {{ error }}
+        <div>
+          <p style= "color:red">{{ error }}</p>
+        </div>
+      
           <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>

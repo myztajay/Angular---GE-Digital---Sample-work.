@@ -24,67 +24,20 @@ angular.module('myApp.login', ['ngRoute'])
   }
   $scope.loginFormShow = false;
   $scope.signUpFormShow = true;
-  $scope.error = '';
+  $scope.error = "";
   
   $scope.signUp = function(){
-      console.log("this is email field: ",$scope.email);
-      firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
+    firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
+    .catch(function(res){
+      $scope.error = res.message;
+      $scope.$apply()
+    })
+    .then(function(res){
+      $scope.loginFormShow = true;
+      $scope.signUpFormShow = false;
+    })
+
   }
 
   
-  
-  // $scope.login = function(){
-  //   firebase.$authWithOAuthPopup("facebook").then(function(authData) {
-  //   console.log("Logged in as:", authData.uid);
-  // }).catch(function(error) {
-  //   console.error("Authentication failed:", error);
-  // });
-  // }
-  
-  //reference json that holds contacts
-  // var ref = firebase.database().ref().child('contactlist');
-  //angularfire provides json to array conversion with $firebaseArray
-  // $scope.contacts = $firebaseArray(ref);
-  
-  // $scope.addFormShow = true;
-  // $scope.editFormShow = false;
-  //Create
-  // $scope.addContact = function(){
-  //   ref.push({
-  //     name: $scope.name,
-  //     email: $scope.email,
-  //     phone: $scope.phone
-  //   });
-  //   $scope.name = '';
-  //   $scope.email = '';
-  //   $scope.phone= '';
-  // };
-  // //Delete
-  // $scope.removeContact = function(contact){
-  //   $scope.contacts.$remove(contact);
-  // }
-  // // Show Form
-  // $scope.showEditForm = function(contact){
-  //   // angularfire $id get id of record
-  //   $scope.id = contact.$id;
-  //   $scope.addFormShow = false;
-  //   $scope.editFormShow = true;
-  //   $scope.name = contact.name;
-  //   $scope.email = contact.email;
-  //   $scope.phone = contact.phone;
-  // }
-  // //Update
-  // $scope.editContact = function(contact){
-  //   var id = $scope.id
-  //   var record = $scope.contacts.$getRecord(id);  
-  //   record.name = $scope.name;
-  //   record.email = $scope.email;
-  //   record.phone = $scope.phone;
-  // 
-  //   $scope.contacts.$save(record).then(function(ref){  
-  //   })
-  //   $scope.name = '';
-  //   $scope.email = '';
-  //   $scope.phone= '';
-  // }
 }]);
