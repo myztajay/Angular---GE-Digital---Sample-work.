@@ -9,7 +9,7 @@ angular.module('myApp.login', ['ngRoute'])
   });
 }])
 
-.controller('LoginCtrl', [ '$scope', '$firebaseArray', function($scope, $firebaseArray) {
+.controller('LoginCtrl', [ '$scope', '$firebaseArray', '$window', function($scope, $firebaseArray, $window) {
   // just for demo purpose this database reference will be replaces to an external private file
   if (!firebase.apps.length) {
     var config = {
@@ -22,22 +22,45 @@ angular.module('myApp.login', ['ngRoute'])
     };
     firebase.initializeApp(config);
   }
-  $scope.loginFormShow = false;
-  $scope.signUpFormShow = true;
+  
+  $scope.loginFormShow = true;
+  $scope.signUpFormShow = false;
   $scope.error = "";
   
+  $scope.toSignUp = function(){
+    $scope.loginFormShow = false;
+    $scope.signUpFormShow = true;
+  };
+  $scope.toLogin = function(){
+    $scope.loginFormShow = true;
+    $scope.signUpFormShow = false;
+  };
+  
   $scope.signUp = function(){
+    if($scope.password != $scope.passwordConfirmation){
+      $scope.error = "Your passwords need to match";
+      return;
+    }
     firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
     .catch(function(res){
       $scope.error = res.message;
-      $scope.$apply()
+      $scope.$apply();
     })
     .then(function(res){
       $scope.loginFormShow = true;
       $scope.signUpFormShow = false;
-    })
-
-  }
-
+    });
+  };
   
+  $scope.login = function(){
+    firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password)
+    .catch(function(res){
+      $scope.error = res.message;
+      $scope.$apply();
+    })
+    .then(function(res){
+      $window.location.href = '/#!/contacts';
+    });
+  }
 }]);
+
