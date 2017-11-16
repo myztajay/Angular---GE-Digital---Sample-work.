@@ -4,10 +4,11 @@
 angular.module('myApp', [
   'ngRoute',
   'firebase',
-  'myApp.contacts'
+  'myApp.contacts',
+  'myApp.login',
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/contacts'});
+  $routeProvider.otherwise({redirectTo: '/login'});
 }]);

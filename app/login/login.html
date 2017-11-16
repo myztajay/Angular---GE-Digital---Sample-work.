@@ -1,0 +1,39 @@
+<div ng-controller="LoginCtrl" class= "contacts-container dashboard-container" >
+  <div class="add-edit-card" ng-show="loginFormShow">
+      <div class="card">
+        <h3>Log In</h3>
+        <form ng-submit="Login()" >
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control"  placeholder="Enter Email of Contact" ng-model="email">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control"  placeholder="Enter Password" ng-model="phone">
+          </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>  
+      </div>
+    </div>
+  <div class="add-edit-card" ng-show="signUpFormShow">
+    <div class="card">
+      <h3>Sign up</h3>
+      <form ng-submit="signUp()" >
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control"  placeholder="Enter Email" ng-model="email">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control"  placeholder="Enter Password" ng-model="password">
+        </div>
+        <div class="form-group">
+          <label>Password Confirmation</label>
+          <input type="password" class="form-control"  placeholder="Enter Password" ng-model="passwordConfirmation">
+        </div>
+          {{ error }}
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>  
+</div>
