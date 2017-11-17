@@ -8,8 +8,7 @@ angular.module('myApp.contacts', ['ngRoute'])
     controller: 'ContactsCtrl'
   });
 }])
-
-.controller('ContactsCtrl', [ '$scope', '$firebaseArray', function($scope, $firebaseArray) {
+.controller('ContactsCtrl', [ '$scope', '$firebaseArray', 'UserFactory', function($scope, $firebaseArray, UserFactory) {
   
   // just for demo purpose this database reference will be replaces to an external private file
   if (!firebase.apps.length) {
@@ -35,7 +34,8 @@ angular.module('myApp.contacts', ['ngRoute'])
     ref.push({
       name: $scope.name,
       email: $scope.email,
-      phone: $scope.phone
+      phone: $scope.phone,
+      uid: UserFactory.getCurrentUser().uid
     });
     $scope.name = '';
     $scope.email = '';

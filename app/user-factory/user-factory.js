@@ -1,16 +1,22 @@
 angular.module("myApp").factory("UserFactory", UserFactory);
 
 function UserFactory(){
-  var currentUser = '';
-  var loggedIn = false;
+  var _currentUser = '';
+  var _loggedIn = false ;
   return{
     setCurrentUser: setCurrentUser,
-    currentUser: currentUser,
-    loggedIn: loggedIn
+    getCurrentUser: getCurrentUser,
+    loggedIn: loggedIn,
   };
   
   function setCurrentUser(user){
-        currentUser = user;
-        loggedIn = true;
+        _currentUser = user;
+        _loggedIn = true;
+  }
+  function getCurrentUser(){
+    return _currentUser;
+  }
+  function loggedIn(){
+    return _loggedIn;
   }
 }
