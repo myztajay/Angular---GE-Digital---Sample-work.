@@ -25,10 +25,11 @@ angular.module('myApp.contacts', ['ngRoute'])
   //reference json that holds contacts
   var ref = firebase.database().ref().child('contactlist');
   //angularfire provides json to array conversion with $firebaseArray
-  $scope.contacts = $firebaseArray(ref);
+  $scope.contacts = $firebaseArray(ref)
   
   $scope.addFormShow = true;
   $scope.editFormShow = false;
+  $scope.uid = UserFactory.getCurrentUser().uid;
   //Create
   $scope.addContact = function(){
     ref.push({
