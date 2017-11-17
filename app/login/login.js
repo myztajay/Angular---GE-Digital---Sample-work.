@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.login', ['ngRoute'])
+angular.module('myApp.login', ['ngRoute',])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login', {
@@ -9,7 +9,7 @@ angular.module('myApp.login', ['ngRoute'])
   });
 }])
 
-.controller('LoginCtrl', [ '$scope', '$firebaseArray', '$window', function($scope, $firebaseArray, $window) {
+.controller('LoginCtrl', [ '$scope', '$firebaseArray', '$window', 'UserFactory', function($scope, $firebaseArray, $window, UserFactory) {
   // just for demo purpose this database reference will be replaces to an external private file
   if (!firebase.apps.length) {
     var config = {
@@ -38,7 +38,7 @@ angular.module('myApp.login', ['ngRoute'])
   
   $scope.signUp = function(){
     if($scope.password != $scope.passwordConfirmation){
-      $scope.error = "Your passwords need to match";
+      $scope.error = "Your passwords need to match.";
       return;
     }
     firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
@@ -58,7 +58,9 @@ angular.module('myApp.login', ['ngRoute'])
       $scope.error = res.message;
       $scope.$apply();
     })
-    .then(function(res){
+    .then(function(user){
+      console.log(user);
+      UserFactory.setCurrentUser(user)
       $window.location.href = '/#!/contacts';
     });
   }
