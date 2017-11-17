@@ -8,8 +8,10 @@ angular.module('myApp.contacts', ['ngRoute'])
     controller: 'ContactsCtrl'
   });
 }])
-.controller('ContactsCtrl', [ '$scope', '$firebaseArray', 'UserFactory', function($scope, $firebaseArray, UserFactory) {
-  
+.controller('ContactsCtrl', [ '$scope', '$firebaseArray', '$window','UserFactory', function($scope, $firebaseArray, $window, UserFactory) {
+  if(!UserFactory.getLoggedIn().val ){
+    $window.location.href = '/#!/login';
+  }
   // just for demo purpose this database reference will be replaces to an external private file
   if (!firebase.apps.length) {
     var config = {
@@ -29,14 +31,14 @@ angular.module('myApp.contacts', ['ngRoute'])
   
   $scope.addFormShow = true;
   $scope.editFormShow = false;
-  $scope.uid = UserFactory.getCurrentUser().uid;
+  $scope.uid = UserFactory.getCurrentUser().val;
   //Create
   $scope.addContact = function(){
     ref.push({
       name: $scope.name,
       email: $scope.email,
       phone: $scope.phone,
-      uid: UserFactory.getCurrentUser().uid
+      uid: UserFactory.getCurrentUser().val.uid
     });
     $scope.name = '';
     $scope.email = '';

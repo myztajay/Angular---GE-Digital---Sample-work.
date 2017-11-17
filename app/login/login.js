@@ -11,8 +11,8 @@ angular.module('myApp.login', ['ngRoute',])
 
 .controller('LoginCtrl', [ '$scope', '$firebaseArray', '$window', 'UserFactory', function($scope, $firebaseArray, $window, UserFactory) {
   // just for demo purpose this database reference will be replaces to an external private file
-  if (!firebase.apps.length) {
-    var config = {
+  if(!firebase.apps.length) {
+     var config = {
     apiKey: "AIzaSyBIGGuU_CsX_wY_1SVye0KVW1EJj4Ha2Vc",
     authDomain: "contacts-angularfire.firebaseapp.com",
     databaseURL: "https://contacts-angularfire.firebaseio.com",
@@ -22,7 +22,6 @@ angular.module('myApp.login', ['ngRoute',])
     };
     firebase.initializeApp(config);
   }
-  
   $scope.loginFormShow = true;
   $scope.signUpFormShow = false;
   $scope.error = "";
@@ -54,15 +53,16 @@ angular.module('myApp.login', ['ngRoute',])
   
   $scope.login = function(){
     firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password)
+    .then(function(user){
+      UserFactory.setCurrentUser(user)
+      console.log(UserFactory.getLoggedIn())
+      $scope.$apply();
+      $window.location.href = '/#!/contacts';
+    })
     .catch(function(res){
       $scope.error = res.message;
       $scope.$apply();
     })
-    .then(function(user){
-      console.log(user);
-      UserFactory.setCurrentUser(user)
-      $window.location.href = '/#!/contacts';
-    });
   }
 }]);
 

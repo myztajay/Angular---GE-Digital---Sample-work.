@@ -44,14 +44,14 @@
     <div class="card">
       <h3>Contacts</h3>
       <table class="table table-striped">
-        <thead ng-init="{{uid}}">
+        <thead>
           <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
             <th></th>
           </tr>
-          <tr  ng-repeat ="contact in contacts | filter:uid">
+          <tr  ng-repeat ="contact in contacts | filter:uid.uid">
             <td>{{contact.name}}</td>
             <td>{{contact.email}}</td>
             <td>{{contact.phone}}</td>
