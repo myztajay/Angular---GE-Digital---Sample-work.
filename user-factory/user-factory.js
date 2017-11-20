@@ -15,9 +15,14 @@ function UserFactory(){
   function getLoggedIn(){
     return _loggedIn;
   }
+  function sessionReset(){
+  _currentUser.val = '';
+  _loggedIn.val = false;
+  }
   return{
     setCurrentUser: setCurrentUser,
     getCurrentUser: getCurrentUser,
-    getLoggedIn: getLoggedIn
+    getLoggedIn: getLoggedIn,
+    sessionReset: sessionReset
   };
 }

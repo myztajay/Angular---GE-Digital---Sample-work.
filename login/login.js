@@ -33,6 +33,7 @@ angular.module('myApp.login', ['ngRoute',])
   $scope.toLogin = function(){
     $scope.loginFormShow = true;
     $scope.signUpFormShow = false;
+    
   };
   
   $scope.signUp = function(){
@@ -48,6 +49,7 @@ angular.module('myApp.login', ['ngRoute',])
     .then(function(res){
       $scope.loginFormShow = true;
       $scope.signUpFormShow = false;
+      $scope.$digest();
     });
   };
   

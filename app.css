@@ -32,9 +32,14 @@ body{
   position: relative;
   width: 300px;
   padding: 35px;
-      min-height: 410px;
+  min-height: 410px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
+.card-links{
+  color: #d35400 !important;
+  cursor: pointer;
+ }
 
 
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {

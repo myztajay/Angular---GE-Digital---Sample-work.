@@ -1,5 +1,6 @@
 logs/*
 !.gitkeep
+app
 node_modules/
 tmp
 .DS_Store
