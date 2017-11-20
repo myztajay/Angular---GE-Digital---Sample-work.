@@ -48,6 +48,7 @@ angular.module('myApp.login', ['ngRoute',])
     .then(function(res){
       $scope.loginFormShow = true;
       $scope.signUpFormShow = false;
+      $scope.$digest();
     });
   };
   
