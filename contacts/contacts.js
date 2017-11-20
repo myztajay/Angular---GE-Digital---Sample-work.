@@ -10,7 +10,7 @@ angular.module('myApp.contacts', ['ngRoute'])
 }])
 .controller('ContactsCtrl', [ '$scope', '$firebaseArray', '$window','UserFactory', function($scope, $firebaseArray, $window, UserFactory) {
   if(!UserFactory.getLoggedIn().val ){
-    $window.location.href = '/#!/login';
+    $window.location.href = 'Contactist/#!/login';
   }
   // just for demo purpose this database reference will be replaces to an external private file
   if (!firebase.apps.length) {
