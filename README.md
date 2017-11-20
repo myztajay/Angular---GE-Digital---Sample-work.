@@ -1,7 +1,7 @@
 # `Contactist` 
 This project is contact management system that is built in AngularJS, Firebase and Angular-Seed. Firebase is a backend service used to protype and serve up data from a nosql database on google's cloud. 
-LIVE DEMO: [https://myztajay.github.io/Contactist/](https://myztajay.github.io/Contactist/)
 
+LIVE DEMO: [https://myztajay.github.io/Contactist/](https://myztajay.github.io/Contactist/)
 
 ![alt text][logo]
 
