@@ -57,7 +57,7 @@ angular.module('myApp.login', ['ngRoute',])
       UserFactory.setCurrentUser(user)
       console.log(UserFactory.getLoggedIn())
       $scope.$apply();
-      $window.location.href = '/#!/contacts';
+      $window.location.href = 'Contactist/#!/contacts';
     })
     .catch(function(res){
       $scope.error = res.message;
